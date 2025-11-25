@@ -23,8 +23,8 @@ export default function page() {
       <HeroSlider />
       <Images />
       <Banner/>
-{/*       <NewProducts />
-      <ProductSlider />
+      <NewProducts />
+{/*       <ProductSlider />
       <Modiles />
       <Imagebox />
       <MostSales />

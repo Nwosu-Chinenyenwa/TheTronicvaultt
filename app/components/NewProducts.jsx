@@ -41,7 +41,7 @@ export default function NewProducts() {
     },
     {
       id: 3,
-      img: product3,   
+      img: product3,
       title: "Computer",
       name: "Apple İmac Z0SC4824 Retina",
       price: "$5,759.68",
@@ -98,10 +98,11 @@ export default function NewProducts() {
   const filter = product1Data.filter(
     (product) => product.category === tabs.find((tab) => tab === active)
   );
+
   return (
     <div className="py-20 w-[90vw] m-auto">
       <div className="w-full">
-        <div className="flex items-center gap-10">
+        <div className="flex items-center gap-10 sm:gap-5 sm:text-[14px] md:text-[16px] lg:text-[18px]">
           {tabs.map((tab) => (
             <div
               key={tab}
@@ -131,16 +132,17 @@ export default function NewProducts() {
         </div>
       </div>
 
-      <div className="py-10 grid grid-cols-4">
+      <div className="py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {filter.map((item, index) => (
-          <div key={index} className="w-fit group">
+          <div key={index} className="w-fit group m-auto">
             <div className="p-2 rounded-[8px]">
               <div>
-                <div className="w-[100%] relative">
-                  <Image className="w-[20vw]" src={item.img} alt="products" />
+                <div className="w-[100%] relative flex justify-center">
+                  <Image className="w-[60vw] sm:w-[35vw] md:w-[25vw] lg:w-[20vw]" src={item.img} alt="products" />
+
                   {item.status && (
                     <span
-                      className={`w-[45px] h-[45px] flex rounded-full items-center font-[600] text-[12px] justify-center text-white absolute top-5`}
+                      className={`w-[45px] h-[45px] flex rounded-full items-center font-[600] text-[12px] justify-center text-white absolute top-5 left-0`}
                       style={{
                         background:
                           item.status.toLowerCase() === "new"
@@ -154,34 +156,38 @@ export default function NewProducts() {
                     </span>
                   )}
                 </div>
-                <ul className="flex flex-col gap-2 ">
+
+                <ul className="flex flex-col gap-2">
                   <li className="flex items-center gap-3">
                     <span className="w-full h-[1px] bg-[#e5e5e5]"></span>
                     <span className="text-[#919191]">{item.title}</span>
                     <span className="w-full h-[1px] bg-[#e5e5e5]"></span>
                   </li>
+
                   <li className="text-center flex items-center justify-center">
                     <span className="leading-[22px] text-[#484848] text-[16px] block w-[160px]">
                       {item.name}
                     </span>
                   </li>
+
                   <li className="flex items-center justify-center">
                     <span className="text-[#f28b00] text-[21px] font-[500] mr-[14px]">
                       {item.price}
                     </span>
                     <span className="text-[14px] underline text-[#c5c5c5]">
-                      {" "}
                       {item.oldPrice}
                     </span>
                   </li>
                 </ul>
               </div>
+
               <div className="group">
                 <div className="flex items-center opacity-0 transition-all group-hover:opacity-100 justify-center flex-col mt-5 gap-2">
                   <button className="flex bg-[#f92400] hover:bg-[#f28b00] transition-all text-white gap-3 text-[20px] cursor-pointer font-[600] w-[80%] items-center justify-center h-[45px] rounded-full">
                     <TiShoppingCart className="text-[25px]" />
                     <span>Add To Cart</span>
                   </button>
+
                   <div className="flex items-center gap-10">
                     <div className="text-[#919191] font-[600] text-[12px] flex items-center gap-2">
                       <GoGitCompare />
@@ -194,6 +200,7 @@ export default function NewProducts() {
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         ))}

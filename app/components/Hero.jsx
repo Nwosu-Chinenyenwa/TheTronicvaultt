@@ -139,7 +139,7 @@ export default function HeroSlider({
                   style={{ minWidth: "100%" }}
                 >
                   <div className="w-full min-h-[350px] md:w-1/2">
-                    <p className="text-[#919191] ml-5 text-[16px] md:ml-15">
+                    <p className="text-[#919191] ml-5 mt-10 md:mt-0 text-[16px] md:ml-15">
                       {s.small}
                     </p>
 
