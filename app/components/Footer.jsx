@@ -25,7 +25,7 @@ export default function Footer() {
   return (
     <>
       <footer className="border-t border-[#00000022]">
-        <div className="py-10 w-[90vw] m-auto">
+        <div className="py-10 md:w-[97vw] xl:w-[90vw] m-auto">
           <ul className="flex flex-col md:flex-row justify-between">
             <li className="flex flex-col md:mb-0 mb-5 gap-5">
               <Image className="w-[40vw] md:w-[20vw]" src={logo} alt="Logo" />
@@ -56,7 +56,7 @@ export default function Footer() {
               </div>
             </li>
 
-            <li>
+            <li className="md:hidden lg:block">
               <h2 className="font-[500] text-[#484848] text-[20px]">
                 Find By Categories
               </h2>
