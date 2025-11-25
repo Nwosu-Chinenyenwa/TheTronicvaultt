@@ -83,8 +83,8 @@ export default function MostSales() {
   ];
   return (
     <section className="bg-[#f5f5f5] py-10 flex items-center justify-center">
-      <div className="w-[90vw] flex items-center justify-between  p-10 rounded-2xl">
-        <div className="w-[25vw]">
+      <div className="md:w-[90vw] flex md:flex-row flex-col md:items-center gap-10 md:justify-between  p-10 rounded-2xl">
+        <div className="md:w-[25vw]">
           <div className="flex justify-between items-center py-1 border-b-1 border-[#e5e5e5]">
             <h2 className="text-[20px] text-[#2d2d2d] font-[500] mb-2">
               Bestsellers
@@ -128,7 +128,7 @@ export default function MostSales() {
           ))}
         </div>
 
-        <div className="w-[25vw]">
+        <div className="md:w-[25vw]">
           <div className="flex justify-between items-center py-1 border-b-1 border-[#e5e5e5]">
             <h2 className="text-[20px] text-[#2d2d2d] font-[500] mb-2">
               Featured
@@ -172,7 +172,7 @@ export default function MostSales() {
           ))}
         </div>
 
-        <div className="w-[25vw]">
+        <div className="md:w-[25vw]">
           <div className="flex justify-between items-center py-1 border-b-1 border-[#e5e5e5]">
             <h2 className="text-[20px] text-[#2d2d2d] font-[500] mb-2">
               Hot Sale

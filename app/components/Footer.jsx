@@ -26,9 +26,9 @@ export default function Footer() {
     <>
       <footer className="border-t border-[#00000022]">
         <div className="py-10 w-[90vw] m-auto">
-          <ul className="flex justify-between">
-            <li className="flex flex-col gap-5">
-              <Image className="w-[20vw]" src={logo} alt="Logo" />
+          <ul className="flex flex-col md:flex-row justify-between">
+            <li className="flex flex-col md:mb-0 mb-5 gap-5">
+              <Image className="w-[40vw] md:w-[20vw]" src={logo} alt="Logo" />
               <div className="flex items-center gap-5">
                 <Image className="" src={call} alt="call" />
 
@@ -150,15 +150,15 @@ export default function Footer() {
             <h2 className="mt-[33px] mb-[25px] text-[20px] text-[#484848] text-center">
               Mobile Apps
             </h2>
-            <div className="flex items-center gap-10 items-center justify-center">
+            <div className="flex items-center gap-5 md:gap-10 items-center justify-center">
               <li className="flex gap-5 cursor-pointer hover:border-[#f28b00] transition-all rounded-[8px] border-2 h-[75px] w-[232px] border-[#e5e5e5] items-center justify-center">
                 <Image src={app1} alt="app" />
 
                 <span>
-                  <h2 className="font-[400] text-[18px] text-[#484848]">
+                  <h2 className="font-[400] text-[15px] md:text-[18px] text-[#484848]">
                     App Store
                   </h2>
-                  <p className="text-[#919191] text-[14px]">
+                  <p className="text-[#919191] text-[12px] md:text-[14px]">
                     Available now on the
                   </p>
                 </span>
@@ -167,10 +167,10 @@ export default function Footer() {
                 <Image src={app2} alt="app" />
 
                 <span>
-                  <h2 className="font-[400] text-[18px] text-[#484848]">
+                  <h2 className="font-[400] text-[14px] md:text-[18px] text-[#484848]">
                     Google Store
                   </h2>
-                  <p className="text-[#919191] text-[14px]">
+                  <p className="text-[#919191] text-[12px] md:text-[14px]">
                     Available now on the
                   </p>
                 </span>

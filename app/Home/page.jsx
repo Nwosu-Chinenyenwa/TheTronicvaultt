@@ -22,14 +22,14 @@ export default function page() {
       <Header />
       <HeroSlider />
       <Images />
-      <Banner/>
+      <Banner />
       <NewProducts />
       <ProductSlider />
       <Modiles />
-{/*       <Imagebox />
+      <Imagebox />
       <MostSales />
       <More />
-      <Footer/> */}
+      <Footer />
     </>
   );
 }
