@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import arrow from "../../public/images/arrow-right.png";
 import Image from "next/image";
+import BrandsPage from "../components/BrandsPage";
 
 export default function Page() {
   const [activeIndex, setActiveIndex] = useState(null);

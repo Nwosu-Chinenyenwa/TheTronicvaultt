@@ -17,7 +17,9 @@ export default function notfound() {
     home: "/home",
     about: "/about",
     contact: "/contact",
-    faq:"/faq"
+    faq:"/faq",
+    topcategories:"/topcategories",
+    tracking:"/tracking",
   };
 
   const handle = () => {

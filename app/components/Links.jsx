@@ -8,20 +8,26 @@ import { IoBagCheckOutline, IoHome } from "react-icons/io5";
 import { SiAboutdotme } from "react-icons/si";
 import { RiServiceFill } from "react-icons/ri";
 import { FaQq } from "react-icons/fa";
+import Link from "next/link";
 import { IoMdClose } from "react-icons/io";
 
 export default function Links() {
   const [display, setdisplay] = useState(false);
   return (
     <>
-      <div className="bg-[#f28b00] px-1 pl-4 md:pl-0 md:px-10 py-3 relative items-center flex justify-between">
+      <div className="bg-[#f28b00] z-20 px-1 pl-4 md:pl-0 md:px-10 py-3 relative items-center flex justify-between">
         <ul className="hidden md:flex">
-          <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
-            Home
-          </li>
-          <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
-            About
-          </li>
+          <Link href={"/home"}>
+            <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
+              Home
+            </li>
+          </Link>
+
+          <Link href={"/about"}>
+            <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
+              About
+            </li>
+          </Link>
           <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
             Services
           </li>
@@ -31,15 +37,20 @@ export default function Links() {
           <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
             Cart
           </li>
-          <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
-            Faq
-          </li>
+          <Link href={"/faq"}>
+            <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
+              Faq
+            </li>
+          </Link>
           <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
             Checkout
           </li>
-          <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
-            Contact
-          </li>
+
+          <Link href={"/contact"}>
+            <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
+              Contact
+            </li>
+          </Link>
         </ul>
 
         <li onClick={() => setdisplay(!display)}>

@@ -34,7 +34,7 @@ export default function Nav() {
             <ul
               className={`opacity-0 absolute top-10 bg-white flex flex-col gap-1  m-auto rounded-[5px] p-2 w-[15vw] shadow-sm z-10 ${
                 display === 1
-                  ? "translate-y-2 opacity-100 translate-y-0 transition-all duration-300 ease-in-out"
+                  ? "translate-y-2 opacity-100 z-[30] translate-y-0 transition-all duration-300 ease-in-out"
                   : "opacity-0"
               }`}
             >
@@ -123,7 +123,7 @@ export default function Nav() {
             <div
               className={`absolute right-0 ${
                 cartdropdown === 1
-                  ? "translate-y-2 opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out z-10"
+                  ? "translate-y-2 opacity-100 z-[30] group-hover:translate-y-0 transition-all duration-300 ease-in-out z-10"
                   : "opacity-0"
               }`}
             >
