@@ -10,12 +10,34 @@ import { RiServiceFill } from "react-icons/ri";
 import { FaQq } from "react-icons/fa";
 import Link from "next/link";
 import { IoMdClose } from "react-icons/io";
-
+import { RiMenu2Line } from "react-icons/ri";
+import { LiaGreaterThanSolid } from "react-icons/lia";
 export default function Links() {
   const [display, setdisplay] = useState(false);
   return (
     <>
       <div className="bg-[#f28b00] z-20 px-1 pl-4 md:pl-0 md:px-10 py-3 relative items-center flex justify-between">
+        <div className="w-[20vw] hidden xl:block pl-[30px]">
+          <div className="absolute top-[-10] h-[55px] ">
+            <div className="bg-[#484848] flex items-center justify-center gap-5 text-[#fefefe] font-[600] uppercase text-[18px] h-[55px] w-[250px] rounded-tl-2xl rounded-tr-2xl cursor-pointer">
+              <RiMenu2Line className="text-[25px]" />
+              <span>All Pages</span>
+            </div>
+          </div>
+
+          {/*  <div className="flex absolute z-50 top-10 bg-[#222222] text-white">
+            <ul>
+              <li className="border-b h-[50px] border-[#333333] flex items-center w-[250px] px-[24px]">
+                <IoHome className="mr-[18px] text-2xl" />
+
+                <span className="font-[600]">Home</span>
+              </li>
+          
+       
+            </ul>
+          </div> */}
+        </div>
+
         <ul className="hidden md:flex">
           <Link href={"/home"}>
             <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
@@ -28,9 +50,11 @@ export default function Links() {
               About
             </li>
           </Link>
-          <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
-            Services
-          </li>
+          <Link href={"/brands"}>
+            <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
+              Brands
+            </li>
+          </Link>
           <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
             Shop
           </li>

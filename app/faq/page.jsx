@@ -52,7 +52,7 @@ export default function Page() {
     <>
       <Header />
       <div className="border-b border-[#00000022] py-3 ">
-        <div className="flex items-center gap-5 ml-[19px]">
+        <div className="flex z-0 items-center gap-5 ml-[19px]">
           <h2 className="font-[500] text-[#8c8c8c] cursor-pointer hover:text-[#f28b00] transition-all">
             Home
           </h2>
