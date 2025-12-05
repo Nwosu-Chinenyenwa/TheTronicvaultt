@@ -19,9 +19,9 @@ export default function Top() {
             Store Locator
           </li>
           <Link href={"/tracking"}>
-          <li className="flex px-2 items-center hover:text-[#f28b00] cursor-pointer">
-            Track Your Orders
-          </li>
+            <li className="flex px-2 items-center hover:text-[#f28b00] cursor-pointer">
+              Track Your Orders
+            </li>
           </Link>
         </ul>
 
@@ -45,22 +45,30 @@ export default function Top() {
             <ul
               className={` absolute top-10 bg-white flex flex-col gap-1  m-auto rounded-[5px] p-2 shadow-sm  z-10 ${
                 myaccountOpen === 1
-                  ? "translate-y-2 opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out z-10"
+                  ? "translate-y-2 opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out z-30"
                   : "opacity-0"
               }`}
             >
-              <li className="cursor-pointer transition-all hover:text-[#f28b00]">
-                Login
-              </li>
-              <li className="cursor-pointer transition-all hover:text-[#f28b00]">
-                Sign Up
-              </li>
-              <li className="cursor-pointer transition-all hover:text-[#f28b00]">
-                My cart
-              </li>
-              <li className="cursor-pointer transition-all hover:text-[#f28b00]">
-                My Account
-              </li>
+              <Link href={"/login"}>
+                <li className="cursor-pointer transition-all hover:text-[#f28b00]">
+                  Login
+                </li>
+              </Link>
+              <Link href={"/wishlist"}>
+                <li className="cursor-pointer transition-all hover:text-[#f28b00]">
+                  Wishlist
+                </li>
+              </Link>
+              <Link href={"/cart"}>
+                <li className="cursor-pointer transition-all hover:text-[#f28b00]">
+                  My cart
+                </li>
+              </Link>
+              <Link href={"/myaccount"}>
+                <li className="cursor-pointer transition-all hover:text-[#f28b00]">
+                  My Account
+                </li>
+              </Link>
               <li className="cursor-pointer transition-all hover:text-[#f28b00]">
                 Checkout
               </li>

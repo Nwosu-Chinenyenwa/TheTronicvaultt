@@ -93,41 +93,54 @@ export default function Links() {
       {display && (
         <div className="flex absolute z-50 md:hidden bg-[#222222] text-white">
           <ul>
-            <li className="border-t border-[#333333] flex items-center justify-between w-[100vw] pl-5">
-              <span>Home</span>
-              <span className="w-[51px] h-[50px] bg-[#333] flex items-center justify-center">
-                {" "}
-                <IoHome />
-              </span>
-            </li>
-            <li className="border-t border-[#333333] flex items-center justify-between w-[100vw] pl-5">
-              <span>About</span>
-              <span className="w-[51px] h-[50px] bg-[#333] flex items-center justify-center">
-                {" "}
-                <SiAboutdotme />
-              </span>
-            </li>
-            <li className="border-t border-[#333333] flex items-center justify-between w-[100vw] pl-5">
-              <span>Services</span>
-              <span className="w-[51px] h-[50px] bg-[#333] flex items-center justify-center">
-                {" "}
-                <RiServiceFill />
-              </span>
-            </li>
-            <li className="border-t border-[#333333] flex items-center justify-between w-[100vw] pl-5">
-              <span>Faq</span>
-              <span className="w-[51px] h-[50px] bg-[#333] flex items-center justify-center">
-                {" "}
-                <FaQq />
-              </span>
-            </li>
-            <li className="border-t border-[#333333] flex items-center justify-between w-[100vw] pl-5">
-              <span>Shop</span>
-              <span className="w-[51px] h-[50px] bg-[#333] flex items-center justify-center">
-                {" "}
-                <FaBagShopping />
-              </span>
-            </li>
+            <Link href={"/home"}>
+              <li className="border-t border-[#333333] flex items-center justify-between w-[100vw] pl-5">
+                <span>Home</span>
+                <span className="w-[51px] h-[50px] bg-[#333] flex items-center justify-center">
+                  {" "}
+                  <IoHome />
+                </span>
+              </li>
+            </Link>
+            <Link href={"/about"}>
+              <li className="border-t border-[#333333] flex items-center justify-between w-[100vw] pl-5">
+                <span>About</span>
+                <span className="w-[51px] h-[50px] bg-[#333] flex items-center justify-center">
+                  {" "}
+                  <SiAboutdotme />
+                </span>
+              </li>
+            </Link>
+
+            <Link href={"/blogs"}>
+              <li className="border-t border-[#333333] flex items-center justify-between w-[100vw] pl-5">
+                <span>blogs</span>
+                <span className="w-[51px] h-[50px] bg-[#333] flex items-center justify-center">
+                  {" "}
+                  <RiServiceFill />
+                </span>
+              </li>
+            </Link>
+
+            <Link href={"/faq"}>
+              <li className="border-t border-[#333333] flex items-center justify-between w-[100vw] pl-5">
+                <span>Faq</span>
+                <span className="w-[51px] h-[50px] bg-[#333] flex items-center justify-center">
+                  {" "}
+                  <FaQq />
+                </span>
+              </li>
+            </Link>
+
+            <Link href={"/shop"}>
+              <li className="border-t border-[#333333] flex items-center justify-between w-[100vw] pl-5">
+                <span>Shop</span>
+                <span className="w-[51px] h-[50px] bg-[#333] flex items-center justify-center">
+                  {" "}
+                  <FaBagShopping />
+                </span>
+              </li>
+            </Link>
             <li className="border-t border-[#333333] flex items-center justify-between w-[100vw] pl-5">
               <span>Cart</span>
               <span className="w-[51px] h-[50px] bg-[#333] flex items-center justify-center">
@@ -142,13 +155,15 @@ export default function Links() {
                 <IoBagCheckOutline />
               </span>
             </li>
-            <li className="border-t border-[#333333] flex items-center justify-between w-[100vw] pl-5">
-              <span>Contact</span>
-              <span className="w-[51px] h-[50px] bg-[#333] flex items-center justify-center">
-                {" "}
-                <MdConnectWithoutContact />
-              </span>
-            </li>
+            <Link href={"/contact"}>
+              <li className="border-t border-[#333333] flex items-center justify-between w-[100vw] pl-5">
+                <span>Contact</span>
+                <span className="w-[51px] h-[50px] bg-[#333] flex items-center justify-center">
+                  {" "}
+                  <MdConnectWithoutContact />
+                </span>
+              </li>
+            </Link>
           </ul>
         </div>
       )}
