@@ -93,7 +93,7 @@ export default function Links() {
       {display && (
         <div className="flex absolute z-50 md:hidden bg-[#222222] text-white">
           <ul>
-            <Link href={"/home"}>
+            <Link href={"/Home"}>
               <li className="border-t border-[#333333] flex items-center justify-between w-[100vw] pl-5">
                 <span>Home</span>
                 <span className="w-[51px] h-[50px] bg-[#333] flex items-center justify-center">

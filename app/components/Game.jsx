@@ -24,25 +24,22 @@ export default function Game() {
   const [spinsRemaining, setSpinsRemaining] = useState(5);
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
-  // Store imported images
   const productImages = [pro1, pro2, pro3, pro4, pro5, pro6];
   const imageCache = useRef({});
 
-  // Real product names
   const prizeLabels = ["AWPods", "Voucher", "Free Data", "Phone", "$50", "Food Coupon"];
 
   const prizes = [
-    { label: prizeLabels[0], color: "#ffffff" }, // White background
-    { label: prizeLabels[1], color: "#ffffff" }, // White background
-    { label: prizeLabels[2], color: "#ffffff" }, // White background
-    { label: prizeLabels[3], color: "#ffffff" }, // White background
-    { label: prizeLabels[4], color: "#ffffff" }, // White background
-    { label: prizeLabels[5], color: "#ffffff" }, // White background
+    { label: prizeLabels[0], color: "#ffffff" }, 
+    { label: prizeLabels[1], color: "#ffffff" }, 
+    { label: prizeLabels[2], color: "#ffffff" }, 
+    { label: prizeLabels[3], color: "#ffffff" }, 
+    { label: prizeLabels[4], color: "#ffffff" },
+    { label: prizeLabels[5], color: "#ffffff" }, 
   ];
 
   const size = 420;
 
-  // Preload all images
   useEffect(() => {
     const loadImages = async () => {
       const loadPromises = productImages.map((imgSrc, index) => {
@@ -63,7 +60,7 @@ export default function Game() {
         drawWheel(0);
       } catch (error) {
         console.error("Error loading images:", error);
-        setImagesLoaded(true); // Continue even if images fail
+        setImagesLoaded(true);
       }
     };
 
@@ -97,7 +94,6 @@ export default function Game() {
 
     ctx.clearRect(0, 0, size, size);
     
-    // Draw white background for the entire wheel
     ctx.beginPath();
     ctx.arc(cx, cy, r, 0, Math.PI * 2);
     ctx.fillStyle = "#ffffff";
@@ -111,7 +107,6 @@ export default function Game() {
     const sliceAngle = (2 * Math.PI) / numSlices;
     const sliceAngleDeg = 360 / numSlices;
 
-    // Draw segment borders
     for (let i = 0; i < numSlices; i++) {
       ctx.beginPath();
       ctx.moveTo(0, 0);
@@ -127,7 +122,6 @@ export default function Game() {
       const segmentCenterAngle = i * sliceAngle + sliceAngle / 2;
       ctx.rotate(segmentCenterAngle);
 
-      // Draw product image
       if (imagesLoaded && imageCache.current[i]) {
         ctx.save();
         ctx.translate(r * 0.5, 0);
@@ -141,7 +135,6 @@ export default function Game() {
         
         ctx.rotate(imageRotation);
         
-        // Draw the product image
         const imgSize = 50;
         try {
           ctx.drawImage(imageCache.current[i], -imgSize/2, -imgSize/2, imgSize, imgSize);
@@ -151,7 +144,6 @@ export default function Game() {
         ctx.restore();
       }
 
-      // Draw text label
       ctx.translate(r * 0.8, 0);
 
       const segmentCenterDeg = i * sliceAngleDeg + sliceAngleDeg / 2;
@@ -172,7 +164,6 @@ export default function Game() {
 
     ctx.restore();
 
-    // Draw center circle
     ctx.beginPath();
     ctx.arc(cx, cy, 48, 0, Math.PI * 2);
     ctx.fillStyle = "#1f2937";
@@ -236,7 +227,7 @@ export default function Game() {
   }
 
   function handleContinue() {
-    router.push("/home");
+    router.push("/Home");
   }
 
   function startConfetti() {
