@@ -20,7 +20,7 @@ export default function Imagebox() {
             the majorited have suffered alteration.
           </p>
 
-          <div className="flex flex-wrap sm:flex-nowrap items-center mt-4 sm:mt-[58px] uppercase justify-between gap-4 sm:gap-0">
+          <div className="flex flex-wrap sm:flex-nowrap items-center mt-4 mr-10 sm:mt-[58px] uppercase justify-between gap-4 sm:gap-0">
             {["Days", "Hours", "Mins", "Secs"].map((label, idx) => (
               <div key={idx} className="flex flex-col gap-1 items-center">
                 <span className="flex items-center justify-center h-[50px] sm:h-[68px] w-[50px] sm:w-[68px] rounded-full text-[#2d2d2d] leading-[50px] sm:leading-[68px] border-[#e5e5e5] border text-[20px] sm:text-[25px] font-[500]">

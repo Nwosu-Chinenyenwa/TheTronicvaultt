@@ -95,7 +95,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Customer Care */}
           <div>
             <h3 className="text-[20px] font-[400] text-[#484848] mb-5">
               Customer Care

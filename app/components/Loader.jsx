@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from "react";
 
-export default function loader() {
+export default function Loader() {
   return (
     <>
-      <section>
+      <section className="">
         <div className="loader">
           <svg
             id="cloud"

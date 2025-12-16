@@ -10,6 +10,7 @@ import pro3 from "../../public/images/03.jpg";
 import pro4 from "../../public/images/04.jpg";
 import pro5 from "../../public/images/05.jpg";
 import pro6 from "../../public/images/06.jpg";
+import { createClient } from "@/utils/supabase/client";
 
 export default function Game() {
   const wheelRef = useRef(null);
@@ -27,18 +28,80 @@ export default function Game() {
   const productImages = [pro1, pro2, pro3, pro4, pro5, pro6];
   const imageCache = useRef({});
 
-  const prizeLabels = ["AWPods", "Voucher", "Free Data", "Phone", "$50", "Food Coupon"];
+  const prizeLabels = [
+    "AWPods",
+    "Voucher",
+    "Free Data",
+    "Phone",
+    "$50",
+    "Food Coupon",
+  ];
 
   const prizes = [
-    { label: prizeLabels[0], color: "#ffffff" }, 
-    { label: prizeLabels[1], color: "#ffffff" }, 
-    { label: prizeLabels[2], color: "#ffffff" }, 
-    { label: prizeLabels[3], color: "#ffffff" }, 
+    { label: prizeLabels[0], color: "#ffffff" },
+    { label: prizeLabels[1], color: "#ffffff" },
+    { label: prizeLabels[2], color: "#ffffff" },
+    { label: prizeLabels[3], color: "#ffffff" },
     { label: prizeLabels[4], color: "#ffffff" },
-    { label: prizeLabels[5], color: "#ffffff" }, 
+    { label: prizeLabels[5], color: "#ffffff" },
   ];
 
   const size = 420;
+
+  function generateUUID() {
+    // simple RFC4122 v4-ish UUID (good enough client-side)
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+      const r = (Math.random() * 16) | 0;
+      const v = c === "x" ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    });
+  }
+
+  async function getCurrentUser() {
+    try {
+      const supabase = createClient(true);
+      const { data } = await supabase.auth.getSession();
+      return data?.session?.user ?? null;
+    } catch (e) {
+      console.error("getCurrentUser error", e);
+      return null;
+    }
+  }
+
+  function getOrCreateGuestId() {
+    const key = "guest_id_v1";
+    let guest = localStorage.getItem(key);
+    if (!guest) {
+      guest = generateUUID();
+      localStorage.setItem(key, guest);
+    }
+    return guest;
+  }
+
+  async function saveSpinResultToDB({ prize, image }) {
+    const supabase = createClient(true);
+    const user = await getCurrentUser();
+
+    if (user) {
+      const { error } = await supabase
+        .from("wins")
+        .insert([{ user_id: user.id, prize, image }]);
+      if (error) console.error("saveSpinResult user insert error", error);
+      await supabase.from("profiles").upsert({ id: user.id, has_played: true });
+    } else {
+      const guestId = getOrCreateGuestId();
+      const { error } = await supabase
+        .from("wins")
+        .insert([{ guest_id: guestId, prize, image }]);
+      if (error) console.error("saveSpinResult guest insert error", error);
+    }
+
+    localStorage.setItem("spinner_played_v1", "1");
+    localStorage.setItem(
+      "spinner_win_v1",
+      JSON.stringify({ prize, image, created_at: new Date().toISOString() })
+    );
+  }
 
   useEffect(() => {
     const loadImages = async () => {
@@ -93,12 +156,12 @@ export default function Game() {
     const r = size / 2 - 8;
 
     ctx.clearRect(0, 0, size, size);
-    
+
     ctx.beginPath();
     ctx.arc(cx, cy, r, 0, Math.PI * 2);
     ctx.fillStyle = "#ffffff";
     ctx.fill();
-    
+
     ctx.save();
     ctx.translate(cx, cy);
     ctx.rotate((-angle * Math.PI) / 180);
@@ -125,19 +188,25 @@ export default function Game() {
       if (imagesLoaded && imageCache.current[i]) {
         ctx.save();
         ctx.translate(r * 0.5, 0);
-        
+
         const segmentCenterDeg = i * sliceAngleDeg + sliceAngleDeg / 2;
         let imageRotation = 0;
-        
+
         if (segmentCenterDeg > 90 && segmentCenterDeg <= 270) {
           imageRotation = Math.PI;
         }
-        
+
         ctx.rotate(imageRotation);
-        
+
         const imgSize = 50;
         try {
-          ctx.drawImage(imageCache.current[i], -imgSize/2, -imgSize/2, imgSize, imgSize);
+          ctx.drawImage(
+            imageCache.current[i],
+            -imgSize / 2,
+            -imgSize / 2,
+            imgSize,
+            imgSize
+          );
         } catch (error) {
           console.error("Error drawing image:", error);
         }
@@ -224,10 +293,21 @@ export default function Game() {
     setSpinsRemaining((prev) => prev - 1);
     startConfetti();
     toast.success(`Congratulations! You won ${wonPrize}`);
+
+    (async () => {
+      try {
+        await saveSpinResultToDB({
+          prize: wonPrize,
+          image: productImages[index]?.src ?? null,
+        });
+      } catch (err) {
+        console.error("Failed to save spin result", err);
+      }
+    })();
   }
 
   function handleContinue() {
-    router.push("/Home");
+    router.push("/home");
   }
 
   function startConfetti() {
@@ -284,8 +364,9 @@ export default function Game() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white p-6">
       <Image className="w-[40vw] lg:w-[20vw]" src={logo} alt="logo" />
-      <h1 className="text-[#2d2d2d] text-[25px] font-[400] py-2">Lucky Spinner</h1>
-
+      <h1 className="text-[#2d2d2d] text-[25px] font-[400] py-2">
+        Lucky Spinner
+      </h1>
 
       {!imagesLoaded && (
         <div className="relative w-[420px] h-[420px] flex items-center justify-center">
@@ -293,7 +374,10 @@ export default function Game() {
         </div>
       )}
 
-      <div className="relative w-[420px] h-[420px]" style={{ display: imagesLoaded ? 'block' : 'none' }}>
+      <div
+        className="relative w-[420px] h-[420px]"
+        style={{ display: imagesLoaded ? "block" : "none" }}
+      >
         <canvas ref={wheelRef} className="rounded-full shadow-xl" />
         <canvas
           ref={confettiRef}
@@ -308,21 +392,22 @@ export default function Game() {
           isContinueMode
             ? "bg-[#d17803] hover:bg-[#d17702] active:scale-95"
             : spinning || !imagesLoaded
-            ? "bg-gray-400 cursor-not-allowed"
-            : "bg-[#f28b00] hover:bg-[#f28b00] active:scale-95"
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-[#f28b00] hover:bg-[#f28b00] active:scale-95"
         }`}
       >
         {!imagesLoaded
           ? "Loading..."
           : isContinueMode
-          ? "CONTINUE"
-          : spinning
-          ? "Spinning..."
-          : `SPIN ${spinsRemaining} left`}
+            ? "CONTINUE"
+            : spinning
+              ? "Spinning..."
+              : `SPIN ${spinsRemaining} left`}
       </button>
 
       <p className="text-[#919191] py-2 text-[14px] text-center">
-       Spin the wheel for a chance to win exclusive products and exciting rewards!
+        Spin the wheel for a chance to win exclusive products and exciting
+        rewards!
       </p>
       <Toaster />
     </div>

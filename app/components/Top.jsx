@@ -69,9 +69,12 @@ export default function Top() {
                   My Account
                 </li>
               </Link>
-              <li className="cursor-pointer transition-all hover:text-[#f28b00]">
-                Checkout
-              </li>
+
+              <Link href={"/checkout"}>
+                <li className="cursor-pointer transition-all hover:text-[#f28b00]">
+                  Checkout
+                </li>
+              </Link>
             </ul>
           </li>
 
@@ -91,8 +94,8 @@ export default function Top() {
             <ul
               className={`absolute top-10 bg-white flex flex-col gap-1  m-auto rounded-[5px] p-2 shadow-sm z-10 ${
                 myaccountOpen === 2
-                  ? "translate-y-2 opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out z-10"
-                  : "opacity-0"
+                  ? "translate-y-2 opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out z-30"
+                  : "opacity-0 z-0"
               }`}
             >
               <li className="cursor-pointer transition-all hover:text-[#f28b00]">

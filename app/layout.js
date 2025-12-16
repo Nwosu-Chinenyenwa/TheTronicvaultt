@@ -1,4 +1,7 @@
 import "./globals.css";
+import { createBrowserClient } from "@/utils/supabase/client";
+import { SupabaseProvider } from "@/utils/supabase/provider";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "TheTronicvaultt",
@@ -12,7 +15,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SupabaseProvider>{children}</SupabaseProvider>
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            duration: 4000,
+          }}
+        />
+      </body>
     </html>
   );
 }

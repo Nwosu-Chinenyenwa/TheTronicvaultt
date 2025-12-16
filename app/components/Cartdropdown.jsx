@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { IoCloseOutline } from "react-icons/io5";
 
@@ -60,13 +61,17 @@ export default function Cartdropdown() {
       </div>
 
       <div className="flex justify-between items-center gap-4">
-        <button className="py-[10px] px-[33px] border-2 border-[#f28b00] rounded-full text-[14px] text-[#f28b00] cursor-pointer font-[600]">
-          View Cart
-        </button>
+        <Link href={"/cart"}>
+          <button className="py-[10px] px-[33px] border-2 border-[#f28b00] rounded-full text-[14px] text-[#f28b00] cursor-pointer font-[600]">
+            View Cart
+          </button>
+        </Link>
 
-        <button className="py-[10px] px-[33px] bg-[#484848] rounded-full text-[14px] text-white font-medium font-[600] cursor-pointer">
-          Checkout
-        </button>
+        <Link href={"/checkout"}>
+          <button className="py-[10px] px-[33px] bg-[#484848] rounded-full text-[14px] text-white font-medium font-[600] cursor-pointer">
+            Checkout
+          </button>
+        </Link>
       </div>
     </div>
   );

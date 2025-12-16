@@ -24,6 +24,10 @@ export default function notfound() {
     brand:"/brands",
     terms:"/terms",
     cart:"/cart",
+    checkout:"/checkout",
+    login:"login",
+    signup:"/myaccount",
+    myaccount:"/myaccount",
   };
 
   const handle = () => {

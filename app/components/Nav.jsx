@@ -11,15 +11,20 @@ import { TiShoppingCart } from "react-icons/ti";
 import { MdCompareArrows } from "react-icons/md";
 import { IoCloseOutline } from "react-icons/io5";
 import Cartdropdown from "./Cartdropdown";
+import Link from "next/link";
 
-export default function Nav() { 
+export default function Nav() {
   const [display, setDisplay] = useState(0);
   const [love, setlove] = useState(false);
   const [cartdropdown, setcartdropdown] = useState(0);
   return (
     <>
       <section className="flex flex-col  md:flex-row p-5 justify-center gap-5 lg:justify-between items-center md:p-10">
-        <Image className="w-[60vw] md:w-[25vw] lg:w-[20vw]" src={logo} alt="Logo" />
+        <Image
+          className="w-[60vw] md:w-[25vw] lg:w-[20vw]"
+          src={logo}
+          alt="Logo"
+        />
 
         <ul className="flex border-2 w-[90vw] lg:w-fit justify-between md:justify-center md:w-fit relative items-center pl-10 p-3 border-[#e5e5e5] active:border-[#d7d2d2] rounded-full gap-7">
           <li className="relative xl:px-2 hidden lg:block">
@@ -93,14 +98,18 @@ export default function Nav() {
             <IoSearchOutline className="text-[#919191] cursor-pointer mr-5 text-[20px]" />
           </li>
         </ul>
-        <ul className="flex items-center gap-5">
-          <div className="h-[50px] w-[50px] rounded-full border-2 transition-all border-[#e5e5e5] text-[#33333374] hover:border-[#f28b00] text-[25px] flex items-center justify-center cursor-pointer">
-            <MdCompareArrows />
-          </div>
+        <ul className="flex items-center z-20 gap-5">
+          <Link href={"/compare"}>
+            <div className="h-[50px] w-[50px] rounded-full border-2 transition-all border-[#e5e5e5] text-[#33333374] hover:border-[#f28b00] text-[25px] flex items-center justify-center cursor-pointer">
+              <MdCompareArrows />
+            </div>
+          </Link>
 
-          <div className="h-[50px] w-[50px] rounded-full border-2 transition-all border-[#e5e5e5] text-[#33333374] hover:border-[#f28b00] text-[25px] flex items-center justify-center cursor-pointer">
-            <FaRegHeart />
-          </div>
+          <Link href={"/wishlist"}>
+            <div className="h-[50px] w-[50px] rounded-full border-2 transition-all border-[#e5e5e5] text-[#33333374] hover:border-[#f28b00] text-[25px] flex items-center justify-center cursor-pointer">
+              <FaRegHeart />
+            </div>
+          </Link>
 
           <div>
             <div
@@ -123,8 +132,8 @@ export default function Nav() {
             <div
               className={`absolute right-0 ${
                 cartdropdown === 1
-                  ? "translate-y-2 opacity-100 z-[30] group-hover:translate-y-0 transition-all duration-300 ease-in-out z-10"
-                  : "opacity-0"
+                  ? "translate-y-2 opacity-100 z-30 group-hover:translate-y-0 transition-all duration-300 ease-in-out"
+                  : "opacity-0 z-0"
               }`}
             >
               <Cartdropdown />

@@ -21,7 +21,7 @@ export default function RecentProducts() {
         <h2 className="text-[20px] font-[400] mb-5">Recent Products</h2>
       </div>
 
-      <div className="flex flex-wrap justify-center md:flex-nowrap items-center">
+      <div className="flex flex-wrap justify-center  items-center">
         {recent.map((item, index) => (
           <div
             key={index}

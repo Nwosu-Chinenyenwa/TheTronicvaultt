@@ -14,6 +14,7 @@ import MostSales from "../components/MostSales";
 import More from "../components/More";
 import Banner from "../components/Banner";
 import Footer from "../components/Footer";
+import RecentProducts from "../components/RecentProducts";
 
 export default function page() {
   return (
@@ -27,6 +28,7 @@ export default function page() {
       <ProductSlider />
       <Modiles />
       <Imagebox />
+      <RecentProducts />
       <MostSales />
       <More />
       <Footer />

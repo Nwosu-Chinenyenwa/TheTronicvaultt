@@ -12,11 +12,14 @@ import Link from "next/link";
 import { IoMdClose } from "react-icons/io";
 import { RiMenu2Line } from "react-icons/ri";
 import { LiaGreaterThanSolid } from "react-icons/lia";
+import SubmenuBannerBoxes from "./SubmenuBannerBoxes";
 export default function Links() {
   const [display, setdisplay] = useState(false);
+  const [showElectronicsMenu, setShowElectronicsMenu] = useState(false);
+
   return (
     <>
-      <div className="bg-[#f28b00] z-20 px-1 pl-4 md:pl-0 md:px-10 py-3 relative items-center flex justify-between">
+      <div className="bg-[#f28b00] z-10 px-1 pl-4 md:pl-0 md:px-10 py-3 relative items-center flex justify-between">
         <div className="w-[20vw] hidden xl:block pl-[30px]">
           <div className="absolute top-[-10] h-[55px] ">
             <div className="bg-[#484848] flex items-center justify-center gap-5 text-[#fefefe] font-[600] uppercase text-[18px] h-[55px] w-[250px] rounded-tl-2xl rounded-tr-2xl cursor-pointer">
@@ -58,17 +61,30 @@ export default function Links() {
           <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
             Shop
           </li>
-          <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
-            Cart
-          </li>
+          <Link href={"/cart"}>
+            <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
+              Cart
+            </li>
+          </Link>
           <Link href={"/faq"}>
             <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
               Faq
             </li>
           </Link>
-          <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
-            Checkout
-          </li>
+          <div className="" onMouseEnter={() => setShowElectronicsMenu(true)}>
+            <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
+              Electronics
+            </li>
+
+            {showElectronicsMenu && (
+              <div
+                onMouseLeave={() => setShowElectronicsMenu(false)}
+                className="absolute left-[50] top-full z-50 slideFade"
+              >
+                <SubmenuBannerBoxes />
+              </div>
+            )}
+          </div>
 
           <Link href={"/contact"}>
             <li className="text-[14px] text-[#fefefe] border-r border-[#fec579] px-5 cursor-pointer">
@@ -91,7 +107,7 @@ export default function Links() {
       </div>
 
       {display && (
-        <div className="flex absolute z-50 md:hidden bg-[#222222] text-white">
+        <div className="flex absolute w-screen  z-20 md:hidden bg-[#222222] text-white">
           <ul>
             <Link href={"/Home"}>
               <li className="border-t border-[#333333] flex items-center justify-between w-[100vw] pl-5">
@@ -148,13 +164,7 @@ export default function Links() {
                 <MdShoppingCart />
               </span>
             </li>
-            <li className="border-t border-[#333333] flex items-center justify-between w-[100vw] pl-5">
-              <span>Checkout</span>
-              <span className="w-[51px] h-[50px] bg-[#333] flex items-center justify-center">
-                {" "}
-                <IoBagCheckOutline />
-              </span>
-            </li>
+
             <Link href={"/contact"}>
               <li className="border-t border-[#333333] flex items-center justify-between w-[100vw] pl-5">
                 <span>Contact</span>
