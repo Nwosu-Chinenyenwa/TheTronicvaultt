@@ -46,8 +46,13 @@ export const updateSession = async (request) => {
 
   const pathname = request.nextUrl.pathname;
 
+  const isResetPage = pathname === "/resetpassword";
+
+  if (isResetPage && !request.nextUrl.searchParams.get("token")) {
+    return NextResponse.redirect(new URL("/forgotpassword", request.url));
+  }
+
   const isLoginPage = pathname.startsWith("/Login");
-  const isResetPage = pathname === "/ResetPassword";
 
   if (user && isLoginPage && !isResetPage) {
     return NextResponse.redirect(new URL("/Home", request.url));
@@ -72,7 +77,7 @@ export const updateSession = async (request) => {
     }
   }
 
- const adminPaths = [
+  const adminPaths = [
     "/admin",
     "/Accounts",
     "/AddProducts",

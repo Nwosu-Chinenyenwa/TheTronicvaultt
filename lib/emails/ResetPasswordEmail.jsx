@@ -4,7 +4,6 @@ import {
   Head,
   Heading,
   Html,
-  Link,
   Preview,
   Section,
   Text,
@@ -35,61 +34,49 @@ const text = {
   color: "#555",
   fontSize: "16px",
   lineHeight: "1.5",
-  marginBottom: "24px",
+  marginBottom: "16px",
 };
 
-const buttonContainer = {
-  textAlign: "center",
-  marginTop: "32px",
-};
-
-const button = {
-  backgroundColor: "#f28b00",
+const codeContainer = {
+  backgroundColor: "#f4f4f4",
   borderRadius: "4px",
-  color: "#fff",
-  display: "inline-block",
-  fontSize: "16px",
-  fontWeight: "600",
-  padding: "12px 24px",
-  textDecoration: "none",
-};
-
-const footerText = {
-  color: "#999",
-  fontSize: "14px",
-  lineHeight: "1.5",
-  marginTop: "24px",
+  padding: "16px",
+  margin: "24px 0",
   textAlign: "center",
+  fontFamily: "monospace",
 };
 
-export default function ResetPasswordEmail({ resetUrl }) {
+const code = {
+  fontSize: "24px",
+  fontWeight: "600",
+  color: "#f28b00",
+  letterSpacing: "8px",
+};
+
+export default function ResetPasswordEmail({ email, code }) {
   return (
     <Html>
       <Head />
-      <Preview>Reset your password</Preview>
+      <Preview>Your password reset code</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Heading style={h1}>Reset your password</Heading>
+          <Heading style={h1}>Password Reset Request</Heading>
 
           <Text style={text}>
-            We received a request to reset your password. Click the button
-            below to set a new one.
+            You requested a password reset for your account. Use the
+            verification code below to proceed:
           </Text>
 
-          <Text style={text}>
-            If you did not request a password reset, you can safely ignore
-            this email.
-          </Text>
-
-          <Section style={buttonContainer}>
-            <Link style={button} href={resetUrl}>
-              Reset Password
-            </Link>
+          <Section style={codeContainer}>
+            <Text style={code}>{code}</Text>
           </Section>
 
-          <Text style={footerText}>
-            Or copy and paste this link in your browser:<br />
-            {resetUrl}
+          <Text style={text}>
+            This code will expire in 15 minutes.
+          </Text>
+
+          <Text style={text}>
+            If you did not request a password reset, please ignore this email.
           </Text>
         </Container>
       </Body>
